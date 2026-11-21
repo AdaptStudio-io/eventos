@@ -324,7 +324,7 @@ body{font-size:20px;line-height:1.35}
 .pacotes+.oferta{margin:18px 0 0}
 .selo{position:absolute;top:33px;right:-12px;z-index:3;background:var(--laranja);color:var(--preto);font-family:var(--sub);font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:12px;line-height:1;padding:6px 9px 5px;border-radius:6px;transform:rotate(6deg);box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--preto),2px 3px 0 3.5px var(--preto)}
 /* hero alinhado à esquerda */
-.topo .lock .s{left:auto;right:-.04em;bottom:.06em;font-size:.5em;font-weight:400;font-synthesis:none;text-shadow:0 2px 18px rgba(0,0,0,.55)}.topo .lock{padding-bottom:.3em}@media (max-width:880px){.topo .lock{font-size:min(28vw,150px)}}.topo .subt{max-width:46ch;text-wrap:balance}.topo .corrido{text-wrap:balance}
+.topo .lock .s{left:0;right:auto;bottom:.06em;font-size:.5em;font-weight:400;font-synthesis:none;text-shadow:0 2px 18px rgba(0,0,0,.55)}.topo .lock{padding-bottom:.3em}@media (max-width:880px){.topo .lock{font-size:min(28vw,150px)}}.topo .subt{max-width:46ch;text-wrap:balance}.topo .corrido{text-wrap:balance}
 #fotos .galeria{margin-top:0}#fotos{padding-top:clamp(70px,8.8vw,112px)}
 </style>
 </head>
@@ -523,8 +523,8 @@ function ajustar(){
   document.querySelectorAll('.lock').forEach(function(l){
     var t=l.querySelector('.t'), s=l.querySelector('.s'); if(!t||!s) return;
     s.style.fontSize='';
-    var lim=t.getBoundingClientRect().width*0.92, w=s.getBoundingClientRect().width;
-    if(w>lim){ var base=parseFloat(getComputedStyle(s).fontSize); s.style.fontSize=(base*lim/w)+'px'; }
+    var cheio=!!l.closest('.topo'), lim=t.getBoundingClientRect().width*(cheio?1:0.92), w=s.getBoundingClientRect().width;
+    if(cheio||w>lim){ var base=parseFloat(getComputedStyle(s).fontSize); s.style.fontSize=(base*lim/w)+'px'; }
   });
 }
 
