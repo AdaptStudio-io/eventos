@@ -523,8 +523,9 @@ function ajustar(){
   document.querySelectorAll('.lock').forEach(function(l){
     var t=l.querySelector('.t'), s=l.querySelector('.s'); if(!t||!s) return;
     s.style.fontSize='';
-    var cheio=!!l.closest('.topo'), lim=t.getBoundingClientRect().width*(cheio?1:0.92), w=s.getBoundingClientRect().width;
+    var cheio=!!l.closest('.topo'), tw=t.getBoundingClientRect().width, lim=tw*(cheio?0.85:0.92), w=s.getBoundingClientRect().width;
     if(cheio||w>lim){ var base=parseFloat(getComputedStyle(s).fontSize); s.style.fontSize=(base*lim/w)+'px'; }
+    if(cheio){ s.style.left=((tw-s.getBoundingClientRect().width)/2)+'px'; }
   });
 }
 
